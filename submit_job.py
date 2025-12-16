@@ -3,11 +3,14 @@ import os
 from azure.identity import DefaultAzureCredential
 from azure.ai.ml import MLClient
 from azure.ai.ml import command
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # --- Azure config from environment ---
-SUBSCRIPTION_ID = "3225accb-25f4-47b8-a90b-bae4e1b746b4" #os.environ["AZURE_SUBSCRIPTION_ID"]
-RESOURCE_GROUP = "azure-ml" #os.environ["AZURE_RESOURCE_GROUP"]
-WORKSPACE = "azure-ml-models" #os.environ["AZURE_ML_WORKSPACE"]
+SUBSCRIPTION_ID = os.environ["AZURE_SUBSCRIPTION_ID"]
+RESOURCE_GROUP = os.environ["AZURE_RESOURCE_GROUP"]
+WORKSPACE = os.environ["AZURE_ML_WORKSPACE"]
 
 # Authenticate (uses az login or env vars automatically)
 credential = DefaultAzureCredential()
